@@ -33,6 +33,9 @@ public class currentMedsActivity extends AppCompatActivity {
     private ArrayList<String> OTC_array;
     private ArrayAdapter<String> p_adapter;
     private ArrayAdapter<String> o_adapter;
+
+    private EditText prescription_field;
+    private EditText OTC_field;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,14 +59,19 @@ public class currentMedsActivity extends AppCompatActivity {
 
         prescriptions_list.setAdapter(p_adapter);
         OTC_list.setAdapter(o_adapter);
+
+        prescription_field = (EditText)findViewById(R.id.prescription_field);
+        OTC_field = (EditText)findViewById(R.id.OTC_field);
     }
     public void addPrescription(View v){
-        prescription_array.add("Prescription");
+        String text = prescription_field.getText().toString();
+        prescription_array.add(text);
         p_adapter.notifyDataSetChanged();
     }
 
     public void addOTC(View v){
-        OTC_array.add("OTC");
+        String text = OTC_field.getText().toString();
+        OTC_array.add(text);
         o_adapter.notifyDataSetChanged();
     }
 

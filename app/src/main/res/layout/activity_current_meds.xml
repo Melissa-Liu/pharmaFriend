@@ -32,11 +32,20 @@
                 android:id="@+id/prescription_title"
                 />
 
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/prescription_field"
+                android:layout_below="@id/prescription_title"
+                android:hint="Add a prescription drug that you're taking"
+                android:background="@android:color/white"/>
+
             <ListView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:layout_below="@id/prescription_title"
-                android:id="@+id/prescription_list"/>
+                android:layout_below="@id/prescription_field"
+                android:id="@+id/prescription_list"
+                android:background="@android:color/white"/>
 
             <TextView
                 android:layout_below="@id/prescription_list"
@@ -53,11 +62,20 @@
                 android:id="@+id/OTC_title"
                 />
 
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/OTC_field"
+                android:layout_below="@id/OTC_title"
+                android:hint="Add an OTC that you're taking"
+                android:background="@android:color/white"/>
+
             <ListView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:layout_below="@id/OTC_title"
-                android:id="@+id/OTC_list"/>
+                android:layout_below="@id/OTC_field"
+                android:id="@+id/OTC_list"
+                android:background="@android:color/white"/>
 
             <Button
                 android:id="@+id/prescription_button"
