@@ -16,6 +16,12 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 import static android.R.attr.id;
@@ -36,9 +42,16 @@ public class currentMedsActivity extends AppCompatActivity {
 
     private EditText prescription_field;
     private EditText OTC_field;
+
+    DatabaseReference prescriptiondbref;
+    DatabaseReference OTCdbref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        OTCdbref = FirebaseDatabase.getInstance().getReference("OTCs");
+        prescriptiondbref = FirebaseDatabase.getInstance().getReference("prescriptions");
         setContentView(R.layout.activity_current_meds);
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 
@@ -62,17 +75,51 @@ public class currentMedsActivity extends AppCompatActivity {
 
         prescription_field = (EditText)findViewById(R.id.prescription_field);
         OTC_field = (EditText)findViewById(R.id.OTC_field);
+
+        OTCdbref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for( DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String data = ds.getValue().toString();
+                    OTC_array.add(data);
+                    o_adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // ...
+            }
+        });
+        prescriptiondbref.addListenerForSingleValueEvent(new ValueEventListener(){
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for( DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String data = ds.getValue().toString();
+                    prescription_array.add(data);
+                    p_adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // ...
+            }
+        });
     }
+
     public void addPrescription(View v){
         String text = prescription_field.getText().toString();
         prescription_array.add(text);
         p_adapter.notifyDataSetChanged();
+        prescriptiondbref.push().setValue(text);
     }
 
     public void addOTC(View v){
         String text = OTC_field.getText().toString();
         OTC_array.add(text);
         o_adapter.notifyDataSetChanged();
+        OTCdbref.push().setValue(text);
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
