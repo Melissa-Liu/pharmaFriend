@@ -25,9 +25,11 @@
             tools:layout_editor_absoluteX="8dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="66dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:gravity="center"
                 android:layout_marginTop="29dp"
                 android:background="@android:color/black"
                 android:fontFamily="sans-serif-condensed-light"
@@ -40,10 +42,11 @@
                 android:id="@+id/pharma"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="72.4dp"
-                android:layout_marginTop="95dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:gravity="center"
                 android:fontFamily="sans-serif"
                 android:shadowColor="@color/white"
                 android:shadowDx="3"
@@ -52,8 +55,9 @@
                 android:textColor="@android:color/white"
                 android:textSize="70sp"
                 android:background="@android:color/black"
-                android:layout_alignEnd="@+id/pharma"
-                android:id="@+id/friend"/>
+                android:id="@+id/friend"
+                android:layout_below="@+id/pharma"
+                android:layout_centerHorizontal="true" />
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
