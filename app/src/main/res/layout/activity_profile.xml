@@ -13,75 +13,77 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/haha">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="700dp"
+                android:layout_height="65dp"
+                android:text="              YOUR PROFILE"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="30dp"
+                android:paddingTop="15dp"
+
+                android:background="@color/teal"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_width="700dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="156dp"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="10dp"
+                android:text="Username:"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-light"
+                android:textSize="22dp"/>
+            <TextView
+                android:layout_width="700dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="209dp"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="10dp"
+                android:text="Password:"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-light"
+                android:textSize="22dp"/>
+
+            <View android:background="#666666"
+                android:layout_width = "match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="196dp"/>
+
+            <TextView
+                android:layout_width="355dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="87dp"
+                android:background="@color/teal"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-condensed-light"
+                android:textSize="28sp"
+                android:paddingTop="6dp"
+                android:text="  User Information"/>
+
+            <TextView
+                android:layout_width="355dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="257dp"
+                android:background="@color/teal"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-condensed-light"
+                android:textSize="28sp"
+                android:paddingTop="6dp"
+                android:text="  Medical History"/>
+
+
+        </RelativeLayout>
     </FrameLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="700dp"
-            android:layout_height="65dp"
-            tools:text="              YOUR PROFILE"
-            android:fontFamily="sans-serif-condensed"
-            android:textSize="30dp"
-            android:paddingTop="15dp"
 
-            android:background="@color/teal"
-            android:textColor="@color/white"/>
-        <TextView
-            android:layout_width="700dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="156dp"
-            android:layout_marginLeft="22dp"
-            android:layout_marginRight="10dp"
-            tools:text="Username:"
-            android:textColor="@color/white"
-            android:fontFamily="sans-serif-light"
-            android:textSize="22dp"/>
-        <TextView
-            android:layout_width="700dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="209dp"
-            android:layout_marginLeft="22dp"
-            android:layout_marginRight="10dp"
-            tools:text="Password:"
-            android:textColor="@color/white"
-            android:fontFamily="sans-serif-light"
-            android:textSize="22dp"/>
 
-        <View android:background="#666666"
-            android:layout_width = "match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="196dp"/>
-
-        <TextView
-            android:layout_width="355dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="87dp"
-            android:background="@color/teal"
-            android:textColor="@color/white"
-            android:fontFamily="sans-serif-condensed-light"
-            android:textSize="28sp"
-            android:paddingTop="6dp"
-            tools:text="  User Information"/>
-
-        <TextView
-            android:layout_width="355dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="257dp"
-            android:background="@color/teal"
-            android:textColor="@color/white"
-            android:fontFamily="sans-serif-condensed-light"
-            android:textSize="28sp"
-            android:paddingTop="6dp"
-            tools:text="  Medical History"/>
-
-        
-    </RelativeLayout>
 
     <!-- The navbar -->
     <LinearLayout
