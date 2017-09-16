@@ -16,110 +16,67 @@
            app:layout_constraintTop_toTopOf="parent" />-->
 
 
-    <LinearLayout
-        android:layout_width="390dp"
-        android:layout_height="700dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="0dp"
-        android:background="@drawable/loool">
+
         <RelativeLayout
-            android:layout_width="390dp"
-            android:layout_height="700dp"
-            android:layout_marginTop="150dp"
-            android:layout_marginLeft="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/loginbackground"
+            tools:layout_editor_absoluteY="8dp"
+            tools:layout_editor_absoluteX="8dp">
 
-            >
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_marginLeft="68dp"
-                android:textSize="70sp"
-                android:textColor="@color/white"
-                android:layout_marginTop="29dp"
-                android:fontFamily="sans-serif-condensed-light"
-                tools:text="PHARMA"
-                tools:layout_editor_absoluteY="0dp"
-                tools:layout_editor_absoluteX="0dp"
-                android:shadowColor="@color/white"
-                android:shadowDx="3"
-                android:shadowDy="3"
-                />
-            <TextView
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
                 android:layout_marginLeft="66dp"
-                android:textSize="70sp"
-                android:textColor="@color/black"
                 android:layout_marginTop="29dp"
+                android:background="@android:color/black"
                 android:fontFamily="sans-serif-condensed-light"
-                tools:text="PHARMA"
-                tools:layout_editor_absoluteY="0dp"
-                tools:layout_editor_absoluteX="0dp"
                 android:shadowColor="@color/white"
                 android:shadowDx="3"
                 android:shadowDy="3"
-                />
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="95dp"
-                android:layout_marginLeft="72.4dp"
-                android:textSize="70sp"
+                android:text="PHARMA"
                 android:textColor="@color/white"
-                android:shadowColor="@color/white"
-                android:shadowDx="3"
-                android:shadowDy="3"
-                android:fontFamily="sans-serif"
-                tools:text=" friend+"
-                />
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="95dp"
-                android:layout_marginLeft="69dp"
                 android:textSize="70sp"
-                android:textColor="@color/black"
-                android:shadowColor="@color/white"
-                android:shadowDx="3"
-                android:shadowDy="3"
-                android:fontFamily="sans-serif"
-                tools:text=" friend+"
-                />
+                android:id="@+id/pharma"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="72.4dp"
+                android:layout_marginTop="95dp"
+                android:fontFamily="sans-serif"
+                android:shadowColor="@color/white"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:text=" friend+"
+                android:textColor="@android:color/white"
+                android:textSize="70sp"
+                android:background="@android:color/black"
+                android:layout_alignEnd="@+id/pharma"
+                android:id="@+id/friend"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
                 android:paddingTop="15dp"
-                tools:text="      SAY HELLO   >>"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="      SAY HELLO   >>"
                 android:textSize="40sp"
-                android:background="@drawable/my_button"
-                android:layout_marginTop="180dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginRight="32dp"
                 android:fontFamily="sans-serif-condensed-light"
-                android:textColor="@color/white"
-                />
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="72dp"
-                android:paddingTop="15dp"
-                tools:text="      CONTINUE   >>"
-                android:textSize="40sp"
-                android:background="@color/white"
-                android:layout_marginTop="260dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginRight="32dp"
-                android:fontFamily="sans-serif-condensed-light"
-                android:textColor="@color/black"
-                />
+                android:textColor="@android:color/black"
+                android:background="@android:color/white"
+                android:onClick="login"
+                android:id="@+id/button2"
+                android:layout_below="@+id/friend"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="66dp" />
 
         </RelativeLayout>
 
-    </LinearLayout>
     <!-- <ImageView
          android:layout_height="wrap_content"
          android:layout_width="wrap_content"
-         tools:src="@drawable/Untitled"
+         tools:src="@drawable/loginbackground"
          android:id="@+id/main_bg.png"
 
          tools:layout_editor_absoluteY="0dp"
