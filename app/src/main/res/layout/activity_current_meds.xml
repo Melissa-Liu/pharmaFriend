@@ -12,7 +12,7 @@
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/loginbackground">
+        android:background="@drawable/beee">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -26,8 +26,9 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@android:color/darker_gray"
+                android:background="@color/teal"
                 android:text="Prescription Medications"
+                android:fontFamily="sans-serif-condensed"
                 android:textColor="@android:color/white"
                 android:id="@+id/prescription_title"
                 />
@@ -36,9 +37,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/prescription_field"
+                android:textColorHint="@color/white"
                 android:layout_below="@id/prescription_title"
                 android:hint="Add a prescription drug that you're taking"
-                android:background="@android:color/white"/>
+                />
 
             <ListView
                 android:layout_height="wrap_content"
