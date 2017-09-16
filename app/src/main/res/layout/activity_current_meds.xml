@@ -32,8 +32,14 @@
                 android:id="@+id/prescription_title"
                 />
 
-            <TextView
+            <ListView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_below="@id/prescription_title"
+                android:id="@+id/prescription_list"/>
+
+            <TextView
+                android:layout_below="@id/prescription_list"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center"
@@ -47,13 +53,20 @@
                 android:id="@+id/OTC_title"
                 />
 
+            <ListView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_below="@id/OTC_title"
+                android:id="@+id/OTC_list"/>
+
             <Button
                 android:id="@+id/prescription_button"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_alignEnd="@+id/prescription_title"
                 android:layout_alignTop="@+id/prescription_title"
-                android:text="+" />
+                android:text="+"
+                android:onClick="addPrescription"/>
 
             <Button
                 android:id="@+id/OTC_button"
@@ -61,7 +74,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignEnd="@+id/OTC_title"
                 android:layout_alignTop="@+id/OTC_title"
-                android:text="+" />
+                android:text="+"
+                android:onClick="addOTC"/>
 
         </RelativeLayout>
 
