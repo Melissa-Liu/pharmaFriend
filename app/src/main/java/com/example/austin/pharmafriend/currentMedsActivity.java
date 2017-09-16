@@ -62,6 +62,8 @@ public class currentMedsActivity extends AppCompatActivity {
 
         prescription_field = (EditText)findViewById(R.id.prescription_field);
         OTC_field = (EditText)findViewById(R.id.OTC_field);
+
+
     }
     public void addPrescription(View v){
         String text = prescription_field.getText().toString();
