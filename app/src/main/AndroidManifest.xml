@@ -15,7 +15,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChatbotActivity"></activity>
+        <activity
+            android:name=".ChatbotActivity"
+            android:label="Chatbot" />
+        <activity android:name=".ProfileActivity" android:label="Profile"/>
+        <activity android:name=".currentMedsActivity"  android:label="Current Medications"></activity>
     </application>
 
 </manifest>

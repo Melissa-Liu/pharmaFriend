@@ -28,6 +28,7 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:text="Chatbot"
+            android:onClick="chatbotClick"
             android:clickable="true"/>
 
         <TextView
@@ -43,10 +44,8 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:text="Current Medications"
-            android:onClick="currentMedsClick"
             android:clickable="true"/>
 
     </LinearLayout>
 
 </android.support.v4.widget.DrawerLayout>
-
