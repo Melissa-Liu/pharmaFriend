@@ -6,26 +6,74 @@
     android:layout_height="match_parent"
     tools:context="com.example.austin.pharmafriend.MainActivity">
 
-    <TextView
-        android:layout_width="189dp"
-        android:layout_height="101dp"
-        android:text="Meet your PharmaFriend!"
-        android:textSize="28sp"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.121"
-        app:layout_constraintHorizontal_bias="0.445" />
+    <!--    <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Hello World!"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintLeft_toLeftOf="parent"
+           app:layout_constraintRight_toRightOf="parent"
+           app:layout_constraintTop_toTopOf="parent" />-->
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:onClick="login"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="262dp" />
+
+    <LinearLayout
+        android:layout_width="390dp"
+        android:layout_height="700dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp"
+        android:background="@color/teal">
+        <RelativeLayout
+            android:layout_width="380dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="0dp"
+            >
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:textSize="70sp"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-condensed-light"
+                tools:text="PHARMA"
+                tools:layout_editor_absoluteY="0dp"
+                tools:layout_editor_absoluteX="0dp"
+                />
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="70dp"
+                android:layout_marginLeft="65dp"
+                android:textSize="70sp"
+                android:textColor="@color/black"
+                android:fontFamily="sans-serif"
+                tools:text=" friend+"
+                />
+
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                tools:text="SAY HELLO"
+                android:textSize="40sp"
+                android:layout_marginTop="170dp"
+
+                android:fontFamily="sans-serif-condensed-light"
+                android:textColor="@color/black"
+                android:layout_below="@+id/textView"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <!-- <ImageView
+         android:layout_height="wrap_content"
+         android:layout_width="wrap_content"
+         tools:src="@drawable/Untitled"
+         android:id="@+id/main_bg.png"
+
+         tools:layout_editor_absoluteY="0dp"
+         tools:layout_editor_absoluteX="0dp"/>-->
 
 </android.support.constraint.ConstraintLayout>
+
+
