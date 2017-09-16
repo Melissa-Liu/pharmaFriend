@@ -21,46 +21,97 @@
         android:layout_height="700dp"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="0dp"
-        android:background="@color/teal">
+        android:background="@drawable/loool">
         <RelativeLayout
-            android:layout_width="380dp"
-            android:layout_height="300dp"
+            android:layout_width="390dp"
+            android:layout_height="700dp"
             android:layout_marginTop="150dp"
             android:layout_marginLeft="0dp"
+
             >
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_marginLeft="65dp"
+                android:layout_marginLeft="68dp"
                 android:textSize="70sp"
                 android:textColor="@color/white"
+                android:layout_marginTop="29dp"
                 android:fontFamily="sans-serif-condensed-light"
                 tools:text="PHARMA"
                 tools:layout_editor_absoluteY="0dp"
                 tools:layout_editor_absoluteX="0dp"
+                android:shadowColor="@color/white"
+                android:shadowDx="3"
+                android:shadowDy="3"
                 />
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="70dp"
-                android:layout_marginLeft="65dp"
+                android:layout_marginLeft="66dp"
                 android:textSize="70sp"
                 android:textColor="@color/black"
+                android:layout_marginTop="29dp"
+                android:fontFamily="sans-serif-condensed-light"
+                tools:text="PHARMA"
+                tools:layout_editor_absoluteY="0dp"
+                tools:layout_editor_absoluteX="0dp"
+                android:shadowColor="@color/white"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                />
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="95dp"
+                android:layout_marginLeft="72.4dp"
+                android:textSize="70sp"
+                android:textColor="@color/white"
+                android:shadowColor="@color/white"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:fontFamily="sans-serif"
+                tools:text=" friend+"
+                />
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="95dp"
+                android:layout_marginLeft="69dp"
+                android:textSize="70sp"
+                android:textColor="@color/black"
+                android:shadowColor="@color/white"
+                android:shadowDx="3"
+                android:shadowDy="3"
                 android:fontFamily="sans-serif"
                 tools:text=" friend+"
                 />
 
             <Button
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                tools:text="SAY HELLO"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:paddingTop="15dp"
+                tools:text="      SAY HELLO   >>"
                 android:textSize="40sp"
-                android:layout_marginTop="170dp"
-
+                android:background="@drawable/my_button"
+                android:layout_marginTop="180dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:fontFamily="sans-serif-condensed-light"
+                android:textColor="@color/white"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:paddingTop="15dp"
+                tools:text="      CONTINUE   >>"
+                android:textSize="40sp"
+                android:background="@color/white"
+                android:layout_marginTop="260dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
                 android:fontFamily="sans-serif-condensed-light"
                 android:textColor="@color/black"
-                android:layout_below="@+id/textView"
-                android:layout_centerHorizontal="true" />
+                />
 
         </RelativeLayout>
 
