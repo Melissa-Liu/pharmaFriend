@@ -12,7 +12,7 @@
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/loginbackground">
+        android:background="@drawable/beeesmall">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -21,14 +21,16 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:textSize="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@android:color/darker_gray"
-                android:text="Prescription Medications"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:paddingLeft="10dp"
+                android:background="@color/teal"
+                android:fontFamily="sans-serif-condensed-light"
                 android:textColor="@android:color/white"
+                android:text="Prescription Medications"
                 android:id="@+id/prescription_title"
                 />
 
@@ -36,38 +38,64 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/prescription_field"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:layout_below="@id/prescription_title"
-                android:hint="Add a prescription drug that you're taking"
-                android:background="@android:color/white"/>
+                android:hint="     Add a prescription drug..."
+                />
 
             <ListView
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_below="@id/prescription_field"
                 android:id="@+id/prescription_list"
-                android:background="@android:color/white"/>
+                android:background="@color/white"
+                android:textColor="@android:color/white" />
 
             <TextView
                 android:layout_below="@id/prescription_list"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:gravity="center"
+                android:paddingLeft="10dp"
                 android:textSize="20dp"
+                android:gravity="center_vertical"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@android:color/darker_gray"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/teal"
                 android:text="OTC Medications"
+                android:fontFamily="sans-serif-condensed-light"
                 android:textColor="@android:color/white"
                 android:id="@+id/OTC_title"
                 />
+            <Button
+                android:id="@+id/prescription_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/prescription_title"
+                android:layout_alignTop="@+id/prescription_title"
+                android:text="ADD+"
+                android:fontFamily="sans-serif-condensed-light"
+                android:textSize="20sp"
+                android:onClick="addPrescription"/>
+
+            <Button
+                android:id="@+id/OTC_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/OTC_title"
+                android:layout_alignTop="@+id/OTC_title"
+                android:fontFamily="sans-serif-condensed-light"
+                android:textSize="20sp"
+                android:text="ADD+"
+                android:onClick="addOTC"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/OTC_field"
                 android:layout_below="@id/OTC_title"
-                android:hint="Add an OTC that you're taking"
+                android:hint="Add an OTC..."
                 android:background="@android:color/white"/>
 
             <ListView
@@ -76,24 +104,6 @@
                 android:layout_below="@id/OTC_field"
                 android:id="@+id/OTC_list"
                 android:background="@android:color/white"/>
-
-            <Button
-                android:id="@+id/prescription_button"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/prescription_title"
-                android:layout_alignTop="@+id/prescription_title"
-                android:text="+"
-                android:onClick="addPrescription"/>
-
-            <Button
-                android:id="@+id/OTC_button"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/OTC_title"
-                android:layout_alignTop="@+id/OTC_title"
-                android:text="+"
-                android:onClick="addOTC"/>
 
         </RelativeLayout>
 
