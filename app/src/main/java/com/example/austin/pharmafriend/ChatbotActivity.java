@@ -5,6 +5,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Xml;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -33,6 +34,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import org.xmlpull.v1.XmlPullParser;
 
+import android.util.AttributeSet;
+import java.lang.Object;
 
 public class ChatbotActivity extends AppCompatActivity {
 
@@ -42,6 +45,10 @@ public class ChatbotActivity extends AppCompatActivity {
     private String BaseURI = "https://directline.botframework.com";
     private EditText chat_field;
     private LinearLayout mLinLayout;
+
+    private ListView chat_list;
+    private ArrayList<String> chat_array;
+    private ArrayAdapter<String> c_adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +62,18 @@ public class ChatbotActivity extends AppCompatActivity {
 
         chat_field = (EditText)findViewById(R.id.chat_field);
 
-        mLinLayout = (LinearLayout)findViewById(R.id.message_area);
+        //mLinLayout = (LinearLayout)findViewById(R.id.chat_area);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        chat_list = (ListView)findViewById(R.id.chat_list);
+
+        chat_array = new ArrayList<>();
+        c_adapter = new ArrayAdapter<String>(this, R.layout.textviewattributess, R.id.textViewAttributes, chat_array);
+
+        chat_list.setAdapter(c_adapter);
+
+        chat_field = (EditText)findViewById(R.id.chat_field);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
@@ -142,18 +158,38 @@ public class ChatbotActivity extends AppCompatActivity {
 
     }
 
-    public void enterMsg(View v){
-        mLinLayout.addView(createNewTextView());
-    }
+//    public void enterMsg(View v){
+//        mLinLayout.addView(createNewTextView());
+//    }
 
-    private TextView createNewTextView() {
-        final LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        final TextView textView = new TextView(this);
-        textView.setLayoutParams(lparams);
-        String msg = chat_field.getText().toString();
-        textView.setText(msg);
-        XmlPullParser parser = resources.getXml(com.example.austin.pharmafriend);
-        return textView;
+//    protected void createList() {
+//
+//        //final LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+//        chat_list = (ListView)findViewById(R.id.chat_list);
+//
+//        chat_array = new ArrayList<>();
+//        c_adapter = new ArrayAdapter<String>(this, R.layout.textviewattributess, R.id.textViewAttributes, chat_array);
+//
+//        chat_list.setAdapter(c_adapter);
+//
+//        chat_field = (EditText)findViewById(R.id.chat_field);
+//
+//
+//        /*int i = this.getResources().getIdentifier("textViewAttributes", "style", this.getPackageName());
+//        System.out.print(i);
+//        XmlPullParser parser = this.getResources().getXml(R.values.);
+//        //AttributeSet attributes = Xml.asAttributeSet(parser);
+//        final TextView textView = new TextView(this,attributes);*/
+////        textView.setLayoutParams(lparams);
+////        String msg = chat_field.getText().toString();
+////        textView.setText(msg);
+////        return textView;
+//    }
+
+    public void addchat(View v){
+        String text = chat_field.getText().toString();
+        chat_array.add(text);
+        c_adapter.notifyDataSetChanged();
     }
 }
 
