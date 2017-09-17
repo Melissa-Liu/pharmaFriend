@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.viralandroid.chartmessangingappui.MainActivity">
+    android:layout_height="match_parent">
 
     <!-- The main content view -->
     <FrameLayout
@@ -28,11 +28,6 @@
                 android:paddingTop="12dp"
                 android:background="@android:color/darker_gray"
                 android:textColor="@color/white"/>
-            <!--<ListView
-                android:layout_below="@id/chatbox_title"
-                android:id="@+id/message_area"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>-->
 
             <LinearLayout
                 android:layout_below="@id/chatbox_title"
@@ -110,5 +105,5 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</android.support.v4.widget.DrawerLayout>
 
