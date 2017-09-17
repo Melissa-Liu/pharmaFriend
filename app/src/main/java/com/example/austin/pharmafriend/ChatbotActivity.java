@@ -138,6 +138,7 @@ public class ChatbotActivity extends AppCompatActivity {
         return output;
     }
 
+    /*
     public String getRxCUI(String drugNameResponse){
         //drugNameResponse is returned by onEnter
         int firstIndex = drugNameResponse.indexOf(',') + 1;
@@ -155,8 +156,6 @@ public class ChatbotActivity extends AppCompatActivity {
                 try  {
                     JSONObject jsonResponse = new JSONObject(client.newCall(request).execute().body().string());
                     tester[0] = jsonResponse;
-                    JSONObject shadow = jsonResponse.getJSONObject("shadow$_klass");
-                    output[0] = shadow.getString("accessFlags");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -171,6 +170,7 @@ public class ChatbotActivity extends AppCompatActivity {
         }
         return "hello";
     };
+    */
 
     public String getDescriptionMessage(ArrayList<String> RxCUIList){
         String parameter = "";
