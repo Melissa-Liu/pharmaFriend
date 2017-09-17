@@ -75,7 +75,8 @@ public class ChatbotActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public String onEnter(String text){
+    public String onEnter(View v){
+        String userText = chat_field.getText().toString();
         OkHttpClient client = new OkHttpClient.Builder().build();
         String baseUrl = "https://directline.botframework.com/v3" + "/directline/conversations/%s/activities";
 
@@ -85,58 +86,137 @@ public class ChatbotActivity extends AppCompatActivity {
         Request createConvo = new Request.Builder().post(emptyBody).url("https://directline.botframework.com" +
                 "/v3/directline/conversations").header("Authorization", "Bearer JpxDEJksCi0.cwA.osc." +
                 "ZdtOIpo-7sihDULvIt7YrdEAMFvFJjvzXGoY912WmqU").build();
-        Call convoCall = client.newCall(createConvo);
-        String conversationId = "";
+        final Call convoCall = client.newCall(createConvo);
+        final JSONObject conversationId = new JSONObject();
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject jsonResponse = new JSONObject(convoCall.execute().body().string());
+                    Log.d("Here", jsonResponse.toString());
+                    conversationId.put("conversationId", jsonResponse.getString("conversationId"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+
         try {
-            JSONObject jsonResponse = new JSONObject(convoCall.execute().body().string());
-            conversationId = jsonResponse.getString("conversationId");
+            thread.join();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         //Posts the user input
         JSONObject body = new JSONObject();
+        JSONObject from = new JSONObject();
         try {
+            from.put("id", "user1");
             body.put("type", "message");
-            body.put("text", text);
+            body.put("from", from);
+            body.put("userText", userText);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), body.toString());
 
-        String formatted = String.format(baseUrl, conversationId);
+        //RequestBody requestBody = RequestBody.create(MediaType.parse("JSON"), body.toString());
 
-        Request userInput = new Request.Builder().post(requestBody).url("https://directline.botframework.com/v3" +
-                "/directline/conversations/abc123/activities").header("Authorization", "Bearer JpxDEJksCi0.cwA.osc." +
-                "ZdtOIpo-7sihDULvIt7YrdEAMFvFJjvzXGoY912WmqU").build();
-        Call userCall = client.newCall(userInput);
-        String id = "";
+
+        final MediaType JSON
+                = MediaType.parse("application/json; charset=utf-8");
+
+        RequestBody input = RequestBody.create(JSON, body.toString());
+
+
+        //need to get conv id from conversationId
+
+        String convID = " ";
         try {
-            JSONObject jsonResponseTwo = new JSONObject(convoCall.execute().body().string());
-            id = jsonResponseTwo.getString("id");
+            JSONObject arr = new JSONObject(conversationId.toString());
+            convID = arr.getString("conversationId");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String formatted = String.format(baseUrl, convID);
+
+        //need to make request  Request Body include JSON
+        Request userInput = new Request.Builder().post(input).url(formatted).header("Authorization", "Bearer JpxDEJksCi0.cwA.osc." +
+                "ZdtOIpo-7sihDULvIt7YrdEAMFvFJjvzXGoY912WmqU").build();
+        final Call userCall = client.newCall(userInput);
+
+        final JSONObject id = new JSONObject();
+        Thread threadTwo = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject jsonResponse = new JSONObject(userCall.execute().body().string());
+                    Log.d("Here", jsonResponse.toString());
+                    id.put("id", jsonResponse.getString("id"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        threadTwo.start();
+
+        try {
+            threadTwo.join();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String newString = String.format(baseUrl, id);
+
+        // need to get id from id json
+
+        String secondId = " ";
+        try {
+            JSONObject arr = new JSONObject(id.toString());
+            secondId = arr.getString("id");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        secondId = secondId.substring(0, secondId.length() - 8);
+        String newString = String.format(baseUrl, secondId);
         //Chatbot returns the type of action and name of drug
 
-        Request userGet = new Request.Builder().get().url("https://directline.botframework.com/v3" +
-                "/directline/conversations/abc123/activities").header("Authorization", "Bearer JpxDEJksCi0.cwA.osc." +
+        Request userGet = new Request.Builder().get().url(newString).header("Authorization", "Bearer JpxDEJksCi0.cwA.osc." +
                 "ZdtOIpo-7sihDULvIt7YrdEAMFvFJjvzXGoY912WmqU").build();
-        Call getCall = client.newCall(userGet);
+        final Call lastCall = client.newCall(userGet);
 
-        String output = "";
+        final JSONObject output = new JSONObject();
+        final JSONObject[] activity = {new JSONObject()};
+
+        Thread threadThree = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject jsonResponseThree = new JSONObject(lastCall.execute().body().string());
+                    JSONArray activities = jsonResponseThree.getJSONArray("activities");
+                    activity[0] = activities.getJSONObject(activities.length()-1);
+                    output.put("text", activity[0].getString("text"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        threadThree.start();
+
         try {
-            JSONObject jsonResponseThree = new JSONObject(getCall.execute().body().string());
-            JSONArray messages = jsonResponseThree.getJSONArray("activities");
-            int length = messages.length();
-            output = messages.getJSONObject(length - 1).getString("text");
-
+            threadThree.join();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return output;
+
+        String outputFinal = " ";
+        try {
+            JSONObject arr = new JSONObject(output.toString());
+            outputFinal = arr.getString("text");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return outputFinal;
     }
+
 
     /*
     public String getRxCUI(String drugNameResponse){
