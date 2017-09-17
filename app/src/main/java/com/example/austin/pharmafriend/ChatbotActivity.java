@@ -6,7 +6,11 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Xml;
+import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.Menu;
+import android.app.Activity;
 import android.view.View;
 
 import org.json.JSONArray;
@@ -33,6 +37,17 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import org.xmlpull.v1.XmlPullParser;
+import android.graphics.Color;
+import android.util.AttributeSet;
+import java.lang.Object;
+
+import java.util.HashMap;
+import java.util.List;
+
+import android.content.Context;
+import android.view.ViewGroup;
+import android.widget.SimpleAdapter;
 
 public class ChatbotActivity extends AppCompatActivity {
 
@@ -42,6 +57,11 @@ public class ChatbotActivity extends AppCompatActivity {
     private String BaseURI = "https://directline.botframework.com";
     private EditText chat_field;
     private LinearLayout mLinLayout;
+
+    private ListView chat_list;
+    private ArrayList<String> chat_array;
+    private ArrayAdapter<String> c_adapter;
+    public boolean human = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +75,52 @@ public class ChatbotActivity extends AppCompatActivity {
 
         chat_field = (EditText)findViewById(R.id.chat_field);
 
-        mLinLayout = (LinearLayout)findViewById(R.id.message_area);
+        //mLinLayout = (LinearLayout)findViewById(R.id.chat_area);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        chat_list = (ListView)findViewById(R.id.chat_list);
+
+        chat_array = new ArrayList<>();
+
+        c_adapter = new ArrayAdapter<String>(this, R.layout.textviewattributess, R.id.textViewAttributes, chat_array){
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent){
+                // Get the current item from ListView
+                View view = super.getView(position,convertView,parent);
+                if(position%2 == 1)
+                {
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT);
+                    layoutParams.setMargins(30, 0, 0, 0);
+                    // Set a background color for ListView regular row/item
+                    view.setBackgroundResource(R.drawable.lol2);
+                    view.setMinimumWidth(1100);
+
+
+
+                    //view.setGravity(Gravity.RIGHT);
+                }
+                else
+                {
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+                    layoutParams.setMargins(100,100,300,100);
+                    // Set the background color for alternate row/item
+                    view.setBackgroundResource(R.drawable.lol1);
+
+                    view.setMinimumWidth(1100);
+
+                    //chat_field.setGravity(Gravity.LEFT);
+
+                }
+                return view;
+            }
+        };
+
+        chat_list.setAdapter(c_adapter);
+
+        chat_field = (EditText)findViewById(R.id.chat_field);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
@@ -313,23 +376,62 @@ public class ChatbotActivity extends AppCompatActivity {
 
     }
 
+
     public void enterMsg(View v){
         String output = onEnter();
         ArrayList<String> rxcuis = new ArrayList<String>(
                 Arrays.asList("207106", "152923", "656659"));
         String message = getDescriptionMessage(rxcuis);
+//       mLinLayout.addView(createNewTextView());
+   }
+
+//    protected void createList() {
+//
+//        //final LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+//        chat_list = (ListView)findViewById(R.id.chat_list);
+//
+//        chat_array = new ArrayList<>();
+//        c_adapter = new ArrayAdapter<String>(this, R.layout.textviewattributess, R.id.textViewAttributes, chat_array);
+//
+//        chat_list.setAdapter(c_adapter);
+//
+//        chat_field = (EditText)findViewById(R.id.chat_field);
+//
+//
+//        /*int i = this.getResources().getIdentifier("textViewAttributes", "style", this.getPackageName());
+//        System.out.print(i);
+//        XmlPullParser parser = this.getResources().getXml(R.values.);
+//        //AttributeSet attributes = Xml.asAttributeSet(parser);
+//        final TextView textView = new TextView(this,attributes);*/
+////        textView.setLayoutParams(lparams);
+////        String msg = chat_field.getText().toString();
+////        textView.setText(msg);
+////        return textView;
+//    }
+
+    public void addchat(View v){
+
+       /* if (human) {
+            c_adapter = new ArrayAdapter<String>(this, R.layout.textviewattributess, R.id.textViewAttributes, chat_array);
+            human = false;
+        }
+        else {
+            c_adapter = new ArrayAdapter<String>(this, R.layout.textviewattributestwo, R.id.textViewAttributes2, chat_array);
+            human = true;
+        }
+*/
+
+
+        String text = chat_field.getText().toString();
+        chat_array.add(text);
+        c_adapter.notifyDataSetChanged();
     }
 
-    private TextView createNewTextView() {
-        final LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        final TextView textView = new TextView(this);
-        textView.setLayoutParams(lparams);
-        String msg = chat_field.getText().toString();
-        textView.setText(msg);
-        return textView;
-    }
+
+
 
 }
+
 
 
 

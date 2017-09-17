@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--BOT-->
     <solid android:color="#dddddd" />
     <stroke
         android:width="0dip"
+        android:height="30dip"
         android:color="#dddddd" />
     <corners android:radius="10dip" />
     <padding
@@ -10,4 +12,7 @@
         android:left="0dip"
         android:right="0dip"
         android:top="0dip" />
+    <margin
+        android:left="25dip"
+        android:top="10dip"/>
 </shape>

@@ -12,60 +12,42 @@
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/beeesmall">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
-                android:id="@+id/chatbox_title"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="ChatBox"
-                android:gravity="center"
-                android:fontFamily="sans-serif-condensed"
-                android:textSize="30dp"
-                android:paddingTop="12dp"
-                android:background="@android:color/darker_gray"
-                android:textColor="@color/white"/>
+
 
             <LinearLayout
-                android:layout_below="@id/chatbox_title"
-                android:id="@+id/message_area"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+                <ListView
+                    android:id="@+id/chat_list"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/rounded_corner"
-                    android:padding="16dp"
-                    android:text="Android charting application xml ui design tutorial with example. Android charting application xml ui design tutorial with example. Android charting application xml ui design tutorial with example. Android charting application xml ui design tutorial with example."
-                    android:textColor="#000" />
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <EditText
                 android:id="@+id/chat_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"/>
-
+                android:layout_alignParentBottom="true"
+                android:background="@color/white"
+                android:padding="10dp"/>
             <Button
                 android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignTop="@+id/chat_field"
-                android:text="Button"
+                android:text="Send"
                 android:fontFamily="sans-serif-condensed"
                 android:textColor="@color/white"
                 android:background="@android:color/darker_gray"
-                android:onClick="enterMsg"
+                android:onClick="addchat"
                 />
         </RelativeLayout>
     </FrameLayout>
@@ -76,7 +58,7 @@
         android:layout_width="200dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#ffeeeeee"
+        android:background="@color/grey"
         android:orientation='vertical'>
 
         <TextView
@@ -84,13 +66,16 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:text="Chatbot"
-            android:background="@color/white"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-light"
             android:clickable="true"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-light"
             android:text="Profile"
             android:onClick="profileClick"
             android:clickable="true"/>
@@ -99,9 +84,22 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-light"
             android:text="Current Medications"
             android:onClick="currentMedsClick"
             android:clickable="true"/>
+
+        <ListView
+            android:id="@+id/OTC_meds"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:divider="@null">
+        </ListView>
 
     </LinearLayout>
 
