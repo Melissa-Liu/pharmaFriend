@@ -31,6 +31,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import org.xmlpull.v1.XmlPullParser;
+
 
 public class ChatbotActivity extends AppCompatActivity {
 
@@ -150,9 +152,9 @@ public class ChatbotActivity extends AppCompatActivity {
         textView.setLayoutParams(lparams);
         String msg = chat_field.getText().toString();
         textView.setText(msg);
+        XmlPullParser parser = resources.getXml(com.example.austin.pharmafriend);
         return textView;
     }
-
 }
 
 
