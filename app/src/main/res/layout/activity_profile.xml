@@ -84,17 +84,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/medical_history"
+                android:layout_marginLeft="15dp"
                 android:id ="@+id/history_field"
                 android:textColor="@color/white"
-                android:hint="Enter any medical conditions you have..."
+                android:hint="  Enter pre-existing medical conditions"
                 android:textColorHint="@color/white"/>
 
             <ListView
                 android:layout_below="@id/history_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:id="@+id/history_list"
+                android:divider="@color/lightGrey"
+                android:dividerHeight="1px"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 />
         </RelativeLayout>
     </FrameLayout>
@@ -105,7 +109,7 @@
         android:layout_width="200dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#ffeeeeee"
+        android:background="@color/grey"
         android:orientation='vertical'>
 
         <TextView
@@ -113,6 +117,8 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:text="Chatbot"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-light"
             android:onClick="chatbotClick"
             android:clickable="true"/>
 
@@ -120,6 +126,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-light"
             android:text="Profile"
             android:clickable="true"/>
 
@@ -127,9 +135,21 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-light"
             android:text="Current Medications"
             android:onClick="currentMedsClick"
             android:clickable="true"/>
+
+        <ListView
+            android:id="@+id/OTC_meds"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            ></ListView>
 
     </LinearLayout>
 

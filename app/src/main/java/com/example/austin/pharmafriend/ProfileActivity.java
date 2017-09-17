@@ -51,7 +51,7 @@ public class ProfileActivity extends AppCompatActivity {
         history_list = (ListView)findViewById(R.id.history_list);
 
         history_array = new ArrayList<>();
-        h_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, history_array);
+        h_adapter = new ArrayAdapter<String>(this, R.layout.white_font, R.id.history_list_new, history_array);
 
         history_list.setAdapter(h_adapter);
 
