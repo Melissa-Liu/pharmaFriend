@@ -14,6 +14,8 @@ import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -29,10 +31,15 @@ public class ProfileActivity extends AppCompatActivity {
 
     private ArrayList<String> history_array;
     private ArrayAdapter<String> h_adapter;
+
+    DatabaseReference historydbref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        historydbref = FirebaseDatabase.getInstance().getReference("medicalHistory");
+
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
         mDrawerLayout.addDrawerListener(mDrawerToggle);
@@ -49,12 +56,29 @@ public class ProfileActivity extends AppCompatActivity {
         history_list.setAdapter(h_adapter);
 
         history_field = (EditText)findViewById(R.id.history_field);
+
+        historydbref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for( DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String data = ds.getValue().toString();
+                    history_array.add(data);
+                    h_adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // ...
+            }
+        });
     }
 
     public void addhistory(View v){
         String text = history_field.getText().toString();
         history_array.add(text);
         h_adapter.notifyDataSetChanged();
+        historydbref.push().setValue(text);
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
