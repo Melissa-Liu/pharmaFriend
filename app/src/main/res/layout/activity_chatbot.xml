@@ -65,7 +65,7 @@
                 android:fontFamily="sans-serif-condensed"
                 android:textColor="@color/white"
                 android:background="@android:color/darker_gray"
-                android:onClick="onEnter"
+                android:onClick="enterMsg"
                 />
         </RelativeLayout>
     </FrameLayout>

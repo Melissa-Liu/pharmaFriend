@@ -75,7 +75,7 @@ public class ChatbotActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public String onEnter(View v){
+    public String onEnter(){
         String userText = chat_field.getText().toString();
         OkHttpClient client = new OkHttpClient.Builder().build();
         String baseUrl = "https://directline.botframework.com/v3" + "/directline/conversations/%s/activities";
@@ -314,9 +314,10 @@ public class ChatbotActivity extends AppCompatActivity {
     }
 
     public void enterMsg(View v){
+        String output = onEnter();
         ArrayList<String> rxcuis = new ArrayList<String>(
                 Arrays.asList("207106", "152923", "656659"));
-        getDescriptionMessage(rxcuis);
+        String message = getDescriptionMessage(rxcuis);
     }
 
     private TextView createNewTextView() {
