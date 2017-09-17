@@ -136,6 +136,25 @@ public class ChatbotActivity extends AppCompatActivity {
         return output;
     }
 
+    public String getRxCUI(String drugNameResponse){
+        //drugNameResponse is returned by onEnter
+        int firstIndex = drugNameResponse.indexOf(',') + 1;
+        int lastIndex = drugNameResponse.length();
+        String drugName = drugNameResponse.substring(firstIndex, lastIndex);
+        String baseUrl = "https://rxnav.nlm.nih.gov/REST/rxcui?name=" + drugName;
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(baseUrl).build();
+        String output = "";
+        try{
+            Response response = client.newCall(request).execute();
+            output = response.toString();
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return output;
+    };
+
     public void chatBotMessage(String request, String drug){
 
     }
