@@ -5,6 +5,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -15,6 +16,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -142,16 +144,88 @@ public class ChatbotActivity extends AppCompatActivity {
         int lastIndex = drugNameResponse.length();
         String drugName = drugNameResponse.substring(firstIndex, lastIndex);
         String baseUrl = "https://rxnav.nlm.nih.gov/REST/rxcui?name=" + drugName;
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url(baseUrl).build();
-        String output = "";
-        try{
-            Response response = client.newCall(request).execute();
-            output = response.toString();
+        final OkHttpClient client = new OkHttpClient();
+        final Request request = new Request.Builder().url(baseUrl).build();
+        final String[] output = {""};
+        final JSONObject[] tester = {new JSONObject()};
 
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try  {
+                    JSONObject jsonResponse = new JSONObject(client.newCall(request).execute().body().string());
+                    tester[0] = jsonResponse;
+                    JSONObject shadow = jsonResponse.getJSONObject("shadow$_klass");
+                    output[0] = shadow.getString("accessFlags");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+
+        try{
+            thread.join();
         }catch(Exception e){
             e.printStackTrace();
         }
+        return "hello";
+    };
+
+    public String getDescriptionMessage(ArrayList<String> RxCUIList){
+        String parameter = "";
+        for( int i = 0; i < RxCUIList.size(); i++){
+            if( i != RxCUIList.size() - 1 ){
+                parameter = parameter + RxCUIList.get(i) + "+";
+            }
+            else{
+                parameter = parameter + RxCUIList.get(i);
+            }
+        }
+        String baseUrl = "https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=" + parameter;
+        final OkHttpClient client = new OkHttpClient();
+        final Request request = new Request.Builder().url(baseUrl).build();
+        final JSONObject[] tester = {new JSONObject()};
+        final JSONArray[] arrtest = {new JSONArray()};
+        final JSONArray[] arrtest2 = {new JSONArray()};
+        final JSONArray[] arrtest3 = {new JSONArray()};
+        final JSONObject[] obj = {new JSONObject()};
+        final JSONObject[] obj2 = {new JSONObject()};
+        final JSONObject[] obj3 = {new JSONObject()};
+
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try  {
+                    JSONObject jsonResponse = new JSONObject(client.newCall(request).execute().body().string());
+                    tester[0] = jsonResponse;
+                    arrtest[0] = jsonResponse.getJSONArray("fullInteractionTypeGroup");
+                    obj[0] = arrtest[0].getJSONObject(0);
+                    arrtest2[0] = obj[0].getJSONArray("fullInteractionType");
+                    obj2[0] = arrtest2[0].getJSONObject(0);
+                    arrtest3[0] = obj2[0].getJSONArray("interactionPair");
+                    obj3[0] = arrtest3[0].getJSONObject(0);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+
+        try{
+            thread.join();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        String output = "";
+        try{
+            output = obj3[0].getString("description");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
         return output;
     };
 
@@ -160,7 +234,9 @@ public class ChatbotActivity extends AppCompatActivity {
     }
 
     public void enterMsg(View v){
-        mLinLayout.addView(createNewTextView());
+        ArrayList<String> rxcuis = new ArrayList<String>(
+                Arrays.asList("207106", "152923", "656659"));
+        getDescriptionMessage(rxcuis);
     }
 
     private TextView createNewTextView() {
