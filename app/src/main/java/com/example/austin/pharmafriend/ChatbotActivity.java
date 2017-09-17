@@ -93,9 +93,8 @@ public class ChatbotActivity extends AppCompatActivity {
                             LinearLayout.LayoutParams.WRAP_CONTENT);
                     layoutParams.setMargins(30, 0, 0, 0);
                     // Set a background color for ListView regular row/item
-                    view.setBackgroundColor(Color.parseColor("#009999"));
+                    view.setBackgroundResource(R.drawable.lol2);
                     view.setMinimumWidth(1100);
-                    view.setMinimumHeight(50);
 
 
 
@@ -106,7 +105,8 @@ public class ChatbotActivity extends AppCompatActivity {
                     LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
                     layoutParams.setMargins(100,100,300,100);
                     // Set the background color for alternate row/item
-                    view.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                    view.setBackgroundResource(R.drawable.lol1);
+
                     view.setMinimumWidth(1100);
 
                     //chat_field.setGravity(Gravity.LEFT);
