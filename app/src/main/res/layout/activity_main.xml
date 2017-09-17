@@ -16,18 +16,20 @@
            app:layout_constraintTop_toTopOf="parent" />-->
 
     <RelativeLayout
-        android:layout_width="368dp"
-        android:layout_height="495dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/loginbackground"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="42dp"
             android:layout_marginRight="40dp"
-            android:layout_marginTop="109dp"
+            android:layout_marginTop="129dp"
             android:fontFamily="sans-serif-condensed-light"
             android:gravity="center"
             android:shadowColor="@color/black"
@@ -43,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:layout_marginTop="109dp"
+            android:layout_marginTop="129dp"
             android:fontFamily="sans-serif-condensed-light"
             android:gravity="center"
             android:shadowColor="@color/black"
@@ -60,7 +62,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="-10dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:paddingLeft="5dp"
@@ -79,7 +81,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="-10dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:shadowColor="@color/white"
@@ -97,11 +99,11 @@
             android:layout_below="@+id/friend"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="5dp"
             android:background="@color/grey"
             android:fontFamily="sans-serif-condensed-light"
             android:onClick="login"
-            android:text="    SAY HELLO   >>"
+            android:text="     SAY HELLO  >>"
             android:textColor="@color/teal"
             android:textSize="40sp" />
 
@@ -113,13 +115,19 @@
             android:layout_below="@+id/friend"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="85dp"
             android:background="@android:color/white"
             android:fontFamily="sans-serif-condensed-light"
             android:onClick="login"
-            android:text="      REVISIT     >>"
+            android:text="      SIGN UP    >>"
             android:textColor="@color/teal"
             android:textSize="40sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="372dp"
+            android:layout_marginTop="500dp">
+
+        </TextView>
 
     </RelativeLayout>
 

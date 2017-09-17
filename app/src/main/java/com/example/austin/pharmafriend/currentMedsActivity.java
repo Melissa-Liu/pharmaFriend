@@ -65,10 +65,10 @@ public class currentMedsActivity extends AppCompatActivity {
         OTC_list = (ListView)findViewById(R.id.OTC_list);
 
         prescription_array = new ArrayList<>();
-        p_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, prescription_array);
+        p_adapter = new ArrayAdapter<String>(this, R.layout.white_font, R.id.history_list_new, prescription_array);
 
         OTC_array = new ArrayList<>();
-        o_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, OTC_array);
+        o_adapter = new ArrayAdapter<String>(this, R.layout.white_font, R.id.history_list_new, OTC_array);
 
         prescriptions_list.setAdapter(p_adapter);
         OTC_list.setAdapter(o_adapter);
