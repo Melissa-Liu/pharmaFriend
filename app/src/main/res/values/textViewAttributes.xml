@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="textViewAttributes"
+        layout_width="wrap_content"
+        layout_height="wrap_content"
+        layout_marginLeft="10dp"
+        layout_marginRight="10dp"
+        layout_marginTop="10dp"
+        background="@drawable/rounded_corner"
+        padding="16dp"
+        text="Android charting application xml ui design tutorial with example. Android charting application xml ui design tutorial with example. Android charting application xml ui design tutorial with example. Android charting application xml ui design tutorial with example."
+        textColor="#000">
+    </style>
+</resources>

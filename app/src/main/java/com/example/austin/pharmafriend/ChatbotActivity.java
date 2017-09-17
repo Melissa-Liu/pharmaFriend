@@ -17,6 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.xmlpull.v1.XmlPullParser;
+
 public class ChatbotActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -63,8 +65,9 @@ public class ChatbotActivity extends AppCompatActivity {
         final LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         final TextView textView = new TextView(this);
         textView.setLayoutParams(lparams);
-        String msg = chat_field.getText().toString();
-        textView.setText(msg);
+        String text = chat_field.getText().toString();
+        textView.setText(text);
+        XmlPullParser parser = resources.getXml(com.example.austin.pharmafriend);
         return textView;
     }
 }
