@@ -72,19 +72,23 @@
                 />
             <Button
                 android:id="@+id/history_button"
-                android:layout_width="50dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_alignEnd="@+id/medical_history"
                 android:layout_alignTop="@+id/medical_history"
-                android:text="+"
-                android:background="@android:color/darker_gray"
+                android:text="ADD+"
+                android:fontFamily="sans-serif-condensed-light"
+                android:textSize="20sp"
                 android:onClick="addhistory"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:layout_below="@id/medical_history"
-                android:id ="@+id/history_field"/>
+                android:id ="@+id/history_field"
+                android:textColor="@color/white"
+                android:hint="Enter any medical conditions you have..."
+                android:textColorHint="@color/white"/>
+
             <ListView
                 android:layout_below="@id/history_field"
                 android:layout_width="wrap_content"
