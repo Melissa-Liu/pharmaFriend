@@ -25,12 +25,21 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 
 public class ChatbotActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
+
     private String BaseURI = "https://directline.botframework.com";
+    private EditText chat_field;
+    private LinearLayout mLinLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +50,10 @@ public class ChatbotActivity extends AppCompatActivity {
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
         mDrawerLayout.addDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
+
+        chat_field = (EditText)findViewById(R.id.chat_field);
+
+        mLinLayout = (LinearLayout)findViewById(R.id.message_area);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -127,7 +140,18 @@ public class ChatbotActivity extends AppCompatActivity {
 
     }
 
+    public void enterMsg(View v){
+        mLinLayout.addView(createNewTextView());
+    }
 
+    private TextView createNewTextView() {
+        final LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        final TextView textView = new TextView(this);
+        textView.setLayoutParams(lparams);
+        String msg = chat_field.getText().toString();
+        textView.setText(msg);
+        return textView;
+    }
 
 }
 
