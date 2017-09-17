@@ -382,7 +382,9 @@ public class ChatbotActivity extends AppCompatActivity {
         ArrayList<String> rxcuis = new ArrayList<String>(
                 Arrays.asList("207106", "152923", "656659"));
         String message = getDescriptionMessage(rxcuis);
-//       mLinLayout.addView(createNewTextView());
+        addchat();
+        addreply(message);
+
    }
 
 //    protected void createList() {
@@ -409,7 +411,7 @@ public class ChatbotActivity extends AppCompatActivity {
 ////        return textView;
 //    }
 
-    public void addchat(View v){
+    public void addchat(){
 
        /* if (human) {
             c_adapter = new ArrayAdapter<String>(this, R.layout.textviewattributess, R.id.textViewAttributes, chat_array);
@@ -420,12 +422,26 @@ public class ChatbotActivity extends AppCompatActivity {
             human = true;
         }
 */
-
-
         String text = chat_field.getText().toString();
         chat_array.add(text);
         c_adapter.notifyDataSetChanged();
     }
+
+    public void addreply(String s){
+
+       /* if (human) {
+            c_adapter = new ArrayAdapter<String>(this, R.layout.textviewattributess, R.id.textViewAttributes, chat_array);
+            human = false;
+        }
+        else {
+            c_adapter = new ArrayAdapter<String>(this, R.layout.textviewattributestwo, R.id.textViewAttributes2, chat_array);
+            human = true;
+        }
+*/
+        chat_array.add(s);
+        c_adapter.notifyDataSetChanged();
+    }
+
 
 
 
