@@ -12,7 +12,7 @@
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/beee">
+        android:background="@drawable/beeesmall">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_height="match_parent"
                 android:textSize="22sp"
-                android:text=" Username:"
+                android:text=" Username: Tester"
                 android:textColor="@color/white"
                 android:fontFamily="sans-serif-condensed-light"
 
@@ -45,7 +45,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_height="match_parent"
                 android:textSize="22sp"
-                android:text=" Password:"
+                android:text=" Password:  ***********"
                 android:textColor="@color/white"
                 android:fontFamily="sans-serif-condensed-light"
 
@@ -69,8 +69,29 @@
                 android:paddingTop="6dp"
                 android:text="  Medical History"
                 android:id ="@+id/medical_history"
-                android:layout_alignEnd="@+id/your_profile" />
-
+                />
+            <Button
+                android:id="@+id/history_button"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/medical_history"
+                android:layout_alignTop="@+id/medical_history"
+                android:text="+"
+                android:background="@android:color/darker_gray"
+                android:onClick="addhistory"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_below="@id/medical_history"
+                android:id ="@+id/history_field"/>
+            <ListView
+                android:layout_below="@id/history_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:id="@+id/history_list"
+                />
         </RelativeLayout>
     </FrameLayout>
 

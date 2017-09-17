@@ -12,7 +12,7 @@
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/beee">
+        android:background="@drawable/beeesmall">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -38,16 +38,18 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/prescription_field"
                 android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:layout_below="@id/prescription_title"
-                android:hint="Add a prescription drug that you're taking"
+                android:hint="  Add a prescription drug..."
                 />
 
             <ListView
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_below="@id/prescription_field"
                 android:id="@+id/prescription_list"
-                android:background="@android:color/white"/>
+                android:background="@color/white"
+                android:textColor="@android:color/white" />
 
             <TextView
                 android:layout_below="@id/prescription_list"
@@ -58,7 +60,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@android:color/darker_gray"
+                android:background="@color/teal"
                 android:text="OTC Medications"
                 android:textColor="@android:color/white"
                 android:id="@+id/OTC_title"
@@ -86,6 +88,7 @@
                 android:layout_alignEnd="@+id/prescription_title"
                 android:layout_alignTop="@+id/prescription_title"
                 android:text="+"
+                android:background="@color/teal"
                 android:onClick="addPrescription"/>
 
             <Button
